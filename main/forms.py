@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models.fields import BooleanField
-from django.forms.widgets import EmailInput, Select, TextInput
+from django.forms.widgets import EmailInput, RadioSelect, Select, TextInput
 from .models import Employees
 from django.forms import DateTimeInput
 

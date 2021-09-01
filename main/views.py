@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls.base import reverse_lazy
 from django.views.generic import ListView, CreateView
 from .models import Employees
@@ -37,6 +37,21 @@ def add_employee(request):
 
 def oops(request):
     return render(request, 'main/404.html')
+
+def show_detail(request, id):
+    post = Employees.objects.get(id=id)
+
+
+    return render(request, 'main/show_detail.html', {'post':post })
+    # post = get_object_or_404(Employees, pk=post_id)
+
+    # context = {
+
+    #     'post': post
+    # }
+
+    # return render(request, 'main/show_detail.html', context=context )
+
 
 # class addpage(CreateView):
 #     form_class = AddEmployeeForm

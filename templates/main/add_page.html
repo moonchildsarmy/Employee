@@ -414,7 +414,7 @@
                         </div>
 						<!--End Page header-->
 
-						<div class="container add_review-form">
+						<div class="container add_employee-form">
                             <div class="row mt-5">
                                 <form action="{% url 'add_employee' %}" method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
@@ -431,7 +431,7 @@
                                     {{ form.is_active }}
                                     <span>{{ form.error }}</span>
             
-                                    <input name="uploadFromPC" class="btn btn-success text white"  type="submit"></br>
+                                    <input name="uploadFromPC" class="btn btn-primary"  type="submit"></br>
 
                                 </form>
                             </div>

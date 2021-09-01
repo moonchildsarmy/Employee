@@ -440,7 +440,7 @@
 													</tr>
 												</thead>
 												<tbody>
-												    {% for employee in Employees %}
+												    {% for employee in posts %}
 													    <tr>
 														    <td>{{ employee.first_name }}</td>
 														    <td>{{ employee.last_name }}</td>
@@ -448,6 +448,8 @@
 														    <td>{{ employee.start_date }}</td>
 														    <td>{{ employee.salary }}</td>
 														    <td>{{ employee.email }}</td>
+															<td><a class="btn btn-primary" href="{% url 'show_detail' employee.id %}">+ More</a></td>
+															{% comment %} href="{% url 'show_detail' post.id %}" {% endcomment %}
 													    </tr>
 													{% endfor %}
 													      <tr>
