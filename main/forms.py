@@ -1,8 +1,10 @@
 from django import forms
 from django.db.models.fields import BooleanField
-from django.forms.widgets import EmailInput, RadioSelect, Select, TextInput
+from django.forms.widgets import CheckboxInput, EmailInput, RadioSelect, Select, TextInput, DateInput, NullBooleanSelect
 from .models import Employees
 from django.forms import DateTimeInput
+
+
 
 class AddEmployeeForm(forms.ModelForm):
     class Meta:
@@ -18,10 +20,15 @@ class AddEmployeeForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Фамилия'
             }),
-            "birthday": DateTimeInput(attrs={
+            "birthday": DateInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'День рождения'
+                'placeholder': 'День рождения',
             }),
+            # "birthday": forms.SelectDateWidget(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'День рождения',
+            #     'choices': 'BIRTH_YEAR_CHOICES'
+            # }),
             "phone": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Номер телефона'
@@ -30,7 +37,15 @@ class AddEmployeeForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Email'
             }),
-            "start_date": DateTimeInput(attrs={
+            "education": Select(attrs={
+                'class': 'form-control',
+                'label':'Education'
+            }),
+            "position": Select(attrs={
+                'class': 'form-control',
+                'label':'Position'
+            }),
+            "start_date": DateInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата выхода на работу'
             }),
@@ -38,4 +53,10 @@ class AddEmployeeForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Зарплата'
             }),
+            "is_active": CheckboxInput()
         }
+
+class UpdateEmployeeForm(forms.ModelForm):
+    class Meta:
+        model = Employees 
+        fields = '__all__'

@@ -12,10 +12,13 @@ class Position(models.Model):
 
     def str(self):
         return self.name
+    
 
     class Meta:
         verbose_name = "Должность"
         verbose_name_plural = "Должности"
+
+
 
 class Education(models.Model):
     name = models.CharField("Учебное заведение", max_length=100)
@@ -30,14 +33,16 @@ class Education(models.Model):
         verbose_name = "Образование"
         verbose_name_plural = "Образовани"
 
+
+
 class Employees(models.Model):
     first_name = models.CharField("Имя", max_length=100)
     last_name = models.CharField("Фамилия", max_length=100)
     birthday = models.DateField("День рождения")
     phone = models.CharField("Номер телефона", max_length=20)
     email = models.EmailField("Email", max_length=200, null=True)
-    education = models.ForeignKey(Education, on_delete=models.SET_NULL, null=True)
-    position = models.ForeignKey(Position, on_delete=models.SET_NULL, null=True)
+    education = models.ForeignKey(Education, on_delete=models.SET_NULL, null=True, verbose_name="Выбор учебного заведения", )
+    position = models.ForeignKey(Position, on_delete=models.SET_NULL, null=True, verbose_name="Выбор должности")
     start_date = models.DateField("Дата входа на работу",null=True)
     salary = models.PositiveIntegerField("Заработная плата", help_text="указывать сумму в сомах", null=True)
     image = models.ImageField("Изобрежения", upload_to="images/", null=True)
@@ -46,6 +51,7 @@ class Employees(models.Model):
     def str(self):
         return self.first_name
 
+    
     class Meta:
         verbose_name = "Сотрудник"
         verbose_name_plural = "Сотрудники"
