@@ -1,7 +1,7 @@
 from django import forms
 from django.db.models.fields import BooleanField
 from django.forms.widgets import CheckboxInput, EmailInput, RadioSelect, Select, TextInput, DateInput, NullBooleanSelect
-from .models import Employees
+from .models import Employees, Position, Education
 from django.forms import DateTimeInput
 
 
@@ -56,7 +56,48 @@ class AddEmployeeForm(forms.ModelForm):
             "is_active": CheckboxInput()
         }
 
-class UpdateEmployeeForm(forms.ModelForm):
+class AddPositionForm(forms.ModelForm):
     class Meta:
-        model = Employees 
-        fields = '__all__'
+        model = Position
+        fields = [ 'name', 'is_active']
+
+        widgets = {
+            "name" : TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Имя'
+            }),
+            "is_active": CheckboxInput()
+        }
+
+
+class AddEducationForm(forms.ModelForm):
+    class Meta:
+        model = Education
+        fields = [ 'name', 'level', 'faculty', 'year']
+
+        widgets = {
+            "name" : TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Университет'
+            }),
+            "faculty": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Факультет'
+            }),
+            "faculty": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Уровень'
+            }),
+            "year": DateInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Год окончания'
+            }),
+        }
+
+
+class WhyDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Employees
+        fields = ['why']
+
+

@@ -1,0 +1,79 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <!--Page header-->
+						<div class="page-header">
+							<div class="page-leftheader">
+								<h4 class="page-title">EDIT EMPLOYEE FORM</h4>
+							</div>
+						</div>
+						<!--End Page header-->
+
+						<div class="row">
+							<div class="col-lg-8 col-md-12">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">Edit employee form</h3>
+										<div class="card-options ">
+											<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+											<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+										</div>
+									</div>
+									<div class="card-body">
+									    <form method="post" enctype="multipart/form-data">
+										    {% csrf_token %}
+										    <div class="form-group">
+											    <label class="form-label">First Name</label>
+											     {{ form.first_name }}
+										    </div>
+										    <div class="form-group">
+											    <label class="form-label">Last Name</label>
+											     {{ form.last_name}}
+										    </div>
+
+										    <div class="form-group">
+											    <label class="form-label">Birthday</label>
+											     {{ form.birthday }}
+										    </div>
+										    <div class="form-group">
+											    <label class="form-label">Phone Number</label>
+											     {{ form.phone }}
+										    </div>
+										    <div class="form-group">
+											    <label class="form-label">Email</label>
+											     {{ form.email }}
+										    </div>
+										    <div class="form-group">
+											    <label class="form-label">Education</label>
+											    {{ form.education }}
+										    </div>
+										    <div class="form-group">
+											    <label class="form-label">Position</label>
+											    {{ form.position }}
+										    </div>
+										    <div class="form-group">
+											    <label class="form-label">Start Date</label>
+											     {{ form.start_date}}
+										    </div>
+										    <div class="form-group">
+											    <label class="form-label">Salary</label>
+											     {{ form.salary }}
+										    </div>
+											{{ form.image }}
+										    <div class="form-group">
+											    <label class="form-label">Status</label>
+											    {{ form.is_active }}
+										    </div>
+											<span>{{ form.error }}</span>
+
+                                            <input name="uploadFromPC" class="btn btn-primary"  type="submit">
+
+
+                                        </form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock content %}

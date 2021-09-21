@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<body class="app sidebar-mini">
+
+		<!---Global-loader-->
+		<div id="global-loader" >
+			<img src="{% static 'assets/images/svgs/loader.svg' %}" alt="loader">
+		</div>
+        {% include 'include/sidebar.html' %}
+        {% block employee %}
+
+        {% endblock employee %}
+    </body>
+{% endblock content %}

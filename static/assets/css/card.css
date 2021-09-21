@@ -14,3 +14,15 @@
     margin-left: 200px;
     margin-top: 60px;
 }
+
+.position-item {
+    font-size: 50px;
+}
+
+.form-label_1 {
+    font-weight: bold;
+}
+
+.modal-header {
+    background: red;
+}

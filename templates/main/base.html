@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+     {% include 'main/include/header.html' %}
+          {% include 'main/include/sidebar.html' %}
+                  {% block content %}
+
+                  {% endblock content %}
+
+     {% include 'main/include/footer.html' %}
+</html>

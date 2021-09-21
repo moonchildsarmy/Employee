@@ -276,19 +276,10 @@
 									<div class="card-body text-center">
 										<div class="container add_employee-form">
                                             <div class="row mt-5">
-                                                <form action="" method="post" enctype="multipart/form-data">
+                                                <form method="post" enctype="multipart/form-data">
                                                     {% csrf_token %}
-                                                    {{ form.first_name }}<br>
-                                                    {{ form.last_name }}<br>
-                                                    {{ form.birthday }}<br>
-                                                    {{ form.phone }}<br>
-                                                    {{ form.email }}<br>
-                                                    {{ form.education }}<br>
-                                                    {{ form.position }}<br>
-                                                    {{ form.start_date }}<br>
-                                                    {{ form.salary }}<br>
                                                     <div class="form-group">
-                                                        <label class="form-label">Upload images</label>
+                                                        <label class="form-label"></label>
                                                         {{ form.image }}
                                                     </div>
                                                     <div class="form-group">

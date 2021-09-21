@@ -10,7 +10,7 @@ class Position(models.Model):
     name = models.CharField("Должность", max_length=50)
     is_active = models.BooleanField("Активен", default=True)
 
-    def str(self):
+    def __str__(self):
         return self.name
     
 
@@ -26,13 +26,23 @@ class Education(models.Model):
     faculty = models.CharField("Факультет", max_length=100)
     year = models.PositiveSmallIntegerField("Год окончания", default=2020)
 
-    def str(self):
+    def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = "Образование"
-        verbose_name_plural = "Образовани"
+        verbose_name_plural = "Образовании"
 
+
+class Dismissal(models.Model):
+    name = models.CharField("Причина увольнения", max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Причина"
+        verbose_name_plural = "Причины"
 
 
 class Employees(models.Model):
@@ -47,8 +57,9 @@ class Employees(models.Model):
     salary = models.PositiveIntegerField("Заработная плата", help_text="указывать сумму в сомах", null=True)
     image = models.ImageField("Изобрежения", upload_to="images/", null=True)
     is_active = models.BooleanField("Активен", default=True)
+    why = models.ForeignKey(Dismissal, on_delete=models.SET_NULL, null=True, verbose_name="Причина увольнения")
 
-    def str(self):
+    def __str__(self):
         return self.first_name
 
     

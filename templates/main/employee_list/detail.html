@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% block content %}
+						<!--Page header-->
+						<div class="page-header">
+							<div class="page-leftheader">
+								<h4 class="page-title">Cards-Employees</h4>
+							</div>
+						</div>
+						<!--End Page header-->
+						<div class="col-md-12 col-xl-11">
+							<div class="card ">
+								<div class="card-header ">
+									<span class="pg-header">
+								        <a href="{% url 'index' %}" class="btn btn-primary-gradient ml-4 mt-2">Go back</a>
+							        </span>
+									<div class="card-options">
+										<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+										<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x "></i></a>
+									</div>
+								</div>
+								{% comment %} {% for show in post %} {% endcomment %}
+								    <div class="card-body text-center">
+									    <img src="{{ post.image.url }}" class="avatar avatar-xxl brround" alt="">
+									    <h4 class="h4 mb-0 mt-3">{{ post.first_name }}<br> {{ post.last_name }}</h4>
+									    <p class="card-text">{{ post.position.name}}</p>
+								    </div>
+								    <div class="card-group">
+								        <h5 class="card-info">День рождения:<br>{{ post.birthday }}</h5>
+									    <h5 class="card-info">Номер телефона:<br>{{ post.phone }}</h5>
+									    <h5 class="card-info">Email:<br>{{ post.email }}</h5>
+									    <h5 class="card-info">Университет:<br>{{ post.education.name }}</h5>
+										<h5 class="card-info">Факультет:<br>{{ post.education.faculty }}</h5>
+										<h5 class="card-info">Уровень:<br>{{ post.education.level }}</h5>
+										<h5 class="card-info">Год окончания:<br>{{ post.education.year }}</h5>
+									    <h5 class="card-info">Дата входа на работу:<br>{{ post.start_date }}</h5>
+									    <h5 class="card-info">Зарплата:<br>{{ post.salary }}сом</h5>
+									    <h5 class="card-info">Стутус:<br>{{ post.is_active }}</h5>
+
+							        </div>
+								{% comment %} {% endfor %} {% endcomment %}
+						    </div>
+						</div>
+						<!-- End Row-->
+
+					</div>
+				</div><!-- end app-content-->
+			</div>
+{% endblock content %}

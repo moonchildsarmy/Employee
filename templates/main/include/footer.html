@@ -1,0 +1,79 @@
+<!--Footer-->
+{% load static %}
+			<footer class="footer">
+				<div class="container">
+					<div class="row align-items-center flex-row-reverse">
+						<div class="col-md-12 col-sm-12 mt-3 mt-lg-0 text-center">
+							Copyright © 2019 <a href="#">Aronox</a>. Designed by <a href="#">Spruko Technologies Pvt.Ltd</a> All rights reserved.
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- End Footer-->
+<!-- Back to top -->
+		<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+		<!-- Jquery js-->
+		<script src="{% static 'assets/js/vendors/jquery-3.4.0.min.js' %}"></script>
+
+		<!-- Bootstrap4 js-->
+		<script src="{% static 'assets/plugins/bootstrap/popper.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
+		<!--Othercharts js-->
+		<script src="{% static 'assets/plugins/othercharts/jquery.sparkline.min.js' %}"></script>
+
+		<!-- Circle-progress js-->
+		<script src="{% static 'assets/js/vendors/circle-progress.min.js' %}"></script>
+
+		<!-- Jquery-rating js-->
+		<script src="{% static 'assets/plugins/rating/jquery.rating-stars.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+               <!-- Latest compiled and minified JavaScript -->
+         <script src="https://mazcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                 integrity="sha384-Tc5IQib027qyyjSMfHjOMaLkfuWVxZUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7txa"
+                 crossorigin="anonymous"></script>
+         <script>
+             $('#myModal').modal("tooggle")
+         </script>
+         <script>
+             $('#exampleModal').modal("tooggle")
+         </script>
+         <script>
+             $('#sndModal').modal("tooggle")
+         </script>
+
+		<!--Sidemenu js-->
+		<script src="{% static 'assets/plugins/toggle-menu/sidemenu.js' %}"></script>
+
+		<!-- P-scroll js-->
+		<script src="{% static 'assets/plugins/p-scroll/perfect-scrollbar.js' %}"></script>
+		<script src="{% static 'assets/plugins/p-scroll/p-scroll1.js' %}"></script>
+
+		<!-- Data tables js-->
+		<script src="{% static 'assets/plugins/datatable/jquery.dataTables.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/datatable/dataTables.bootstrap4.min.js' %}"></script>
+		<script src="{% static 'assets/js/datatables.js' %}"></script>
+
+		<!-- Select2 js -->
+		<script src="{% static 'assets/plugins/select2/select2.full.min.js' %}"></script>
+
+		<!-- Custom js-->
+		<script src="{% static 'assets/js/custom.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // получим кнопку id="btn" с помощью которой будем открывать модальное окно
+  const btn = document.querySelector('#btn');
+  // активируем контент id="modal" как модальное окно
+  const modal = new bootstrap.Modal(document.querySelector('#modal'));
+  // при нажатии на кнопку
+  btn.addEventListener('click', function() {
+    // открываем модальное окно
+    modal.show();
+  });
+
+});
+<script>
+
+</html>

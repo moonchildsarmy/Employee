@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+{% block content %}
+                        <div class="page-header">
+							<div class="page-leftheader">
+								<h4 class="page-title">Positions List</h4>
+							</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-lg-10">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-options ">
+                                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+                                            <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="example" class="table table-striped table-bordered w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="wd-15p">First name</th>
+                                                        <th class="wd-15p">Last name</th>
+                                                        <th class="wd-15p">Position</th>
+                                                        <th class="wd-15p">Reason for Dismissal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for employee in delete %}
+                                                                <tr>
+                                                                    <td>{{ employee.first_name }}</td>
+                                                                    <td>{{ employee.last_name }}</td>
+                                                                    <td>{{ employee.position }}</td>
+                                                                    <td>{{ employee.why }}</td>
+                                                                    <td><a class="btn btn-primary" href="{% url 'show_detail' employee.id %}"><i class="fa fa-id-card-o" </i></a></td>
+                                                                </tr>
+                                                    {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+									<!-- table-wrapper -->
+                        </div>
+                   </div>
+               </div>
+           </div>
+						<!-- End Row-->
+{% endblock content %}
