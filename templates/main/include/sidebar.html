@@ -11,7 +11,7 @@
 				<div class="app-header header top-header">
 					<div class="container-fluid">
 						<div class="d-flex">
-							<a class="header-brand"  href="{% url 'oops' %}">
+							<a class="header-brand"  href="{% url 'news_list' %}">
 								<img src="{% static 'assets/images/brand/logo-dark.png' %}" class="header-brand-img dark-version" alt="Aronox logo">
 								<img src="{% static 'assets/images/brand/logo.png' %}" class="header-brand-img desktop-lgo" alt="Aronox logo">
 								<img src="{% static 'assets/images/brand/favicon.png' %}" class="header-brand-img mobile-logo" alt="Aronox logo">
@@ -150,7 +150,7 @@
 								<div class="dropdown ">
 									<a class="nav-link pr-0 leading-none" href="#" data-toggle="dropdown" aria-expanded="false">
 									    <div class="profile-details mt-2">
-											<span class="mr-3 font-weight-semibold">Anna Sthesia</span>
+											<span class="mr-3 font-weight-semibold">{{ request.user }}</span>
 											<small class="text-muted mr-3">H&R</small>
 										</div>
 										<img class="avatar avatar-md brround" src="{% static 'assets/images/users/111.jpg' %}" alt="image">
@@ -159,7 +159,7 @@
 										<div class="user-profile border-bottom p-3">
 											<div class="user-image"><img class="user-images" src="{% static 'assets/images/users/111.jpg' %}" alt="image"></div>
 											<div class="user-details">
-												<h4>Anna Sthesia</h4>
+												<h4>{{ request.user }}</h4>
 												<p class="mb-1 fs-13 text-muted">AnnaSthesia@gmail.com</p>
 											</div>
 										</div>
@@ -167,7 +167,7 @@
 										<a href="#" class="dropdown-item pt-3 pb-3"><i class="dropdown-icon mdi  mdi-message-outline text-primary"></i> Messages <span class="badge badge-pill badge-success">41</span></a>
 										<a href="#" class="dropdown-item pt-3 pb-3"><i class="dropdown-icon  mdi mdi-settings text-primary"></i> Setting</a>
 										<a href="#" class="dropdown-item pt-3 pb-3"><i class="dropdown-icon mdi mdi-help-circle-outline text-primary"></i> FAQ</a>
-										<a href="#" class="dropdown-item pt-3 pb-3"><i class="dropdown-icon  mdi  mdi-logout-variant text-primary"></i>Sign Out</a>
+										<a class="dropdown-item pt-3 pb-3" href="{% url 'logout' %}"><i class="dropdown-icon  mdi  mdi-logout-variant text-primary"></i>Sign Out</a>
 									</div>
 								</div>
 							</div>
@@ -183,7 +183,7 @@
 								<img src="{% static 'assets/images/users/111.jpg' %}" alt="user-img" class="avatar-xl rounded-circle mb-1">
 							</div>
 							<div class="user-info">
-								<h6 class=" mb-0 font-weight-semibold">Anna Sthesia</h6>
+								<h6 class=" mb-0 font-weight-semibold">{{ request.user }}</h6>
 								<span class="text-muted app-sidebar__user-name text-sm">H&R</span>
 							</div>
 						</div>
@@ -200,6 +200,9 @@
 						</li>
                         <li>
 							<a class="side-menu__item" href="{% url 'list_delete' %}"><i class="side-menu__icon fa fa-archive"></i><span class="side-menu__label">Dismissed List</span></a>
+						</li>
+                        <li>
+							<a class="side-menu__item" href="{% url 'add_news' %}"><i class="side-menu__icon zmdi zmdi-lamp"></i><span class="side-menu__label">Add News</span></a>
 						</li>
 					</ul>
 				</aside>

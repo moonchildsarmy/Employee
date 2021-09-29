@@ -53,24 +53,6 @@
                                                 {% endfor %}
                                             </ul>
                                         </div>
-{#                                        <li class="slide">#}
-{#                                            <a class="side-menu__item"  data-toggle="slide" href="#"><i class="side-menu__icon fa fa-angellist"></i><span class="side-menu__label">Positions</span><i class="angle fa fa-angle-right"></i></a>#}
-{#							                <ul class="slide-menu">#}
-{#                                                {% for employee in categories %}#}
-{#                                                    {% if employee.is_active %}#}
-{#                                                        <li><a class="slide-item" href="{% url 'filter' employee.id %}"><span>{{ employee.name }}</span></a></li>#}
-{#                                                    {% endif %}#}
-{#                                                {% endfor %}#}
-{#                                            </ul>#}
-{#						                </li>#}
-{#                                        <li class="slide">#}
-{#                                            <a class="side-menu__item"  data-toggle="slide" href="#"><i class="side-menu__icon fa fa-graduation-cap"></i><span class="side-menu__label">Educations</span><i class="angle fa fa-angle-right"></i></a>#}
-{#                                            <ul class="slide-menu">#}
-{#                                                {% for employees in education %}#}
-{#                                                    <li><a class="slide-item" href="{% url 'edufilter' employees.id %}"><span>{{ employees.name }}</span></a></li>#}
-{#                                                {% endfor %}#}
-{#                                            </ul>#}
-{#                                        </li>#}
 										<div class="card-options ">
 											<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
 											<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -120,7 +102,7 @@
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="modal-footer">
-                                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                                    <button type="submit" class="btn btn-danger">Save changes</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

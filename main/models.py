@@ -1,8 +1,16 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from datetime import date
 from django.db.models.deletion import SET_NULL
 
 from django.urls import reverse
+
+
+User = get_user_model()
+
+
+def get_models_for_count(*model_names):
+    return [models.Count(model_name) for model_name in model_names]
 
 
 
@@ -68,4 +76,28 @@ class Employees(models.Model):
         verbose_name_plural = "Сотрудники"
 
 
+class News(models.Model):
+    title = models.CharField("Заголовок", max_length=100)
+    text = models.CharField("Текст статьи", max_length=500)
+    image = models.ImageField("Изобрежения", upload_to="images/", null=True)
+    employee = models.ForeignKey(Employees, on_delete=models.SET_NULL, null=True, verbose_name="Сотрудник")
+
+    def __str__(self):
+        return self.title
+
+
+    class Meta:
+        verbose_name = "Новость"
+        verbose_name_plural = "Новости"
+
+
+# class User(models.Model):
+#     username = models.CharField("Имя пользователя", max_length=100)
+#     password = models.CharField("Пароль", max_length=100)
+#
+#     def __str__(self):
+#         return self.username
+#
+#     class Meta:
+#         verbose_name = ""
 # Create your models here.

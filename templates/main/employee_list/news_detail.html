@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% block content %}
+                        <div class="row">
+							<div class="col-md-12 wrapper wrapper-content animated fadeInRight">
+								<div class="ibox card">
+									 <div class="card-header">
+										<h3 class="card-title">{{ cards.employee }}</h3>
+										<div class="card-options ">
+											<a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+											<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+										</div>
+									</div>
+									<div class="card-body">
+										<div class="ibox-content">
+											<div class="row">
+												<div class="col-md-12 col-lg-5">
+													<div class="cart-product-imitation">
+														<img src="{{ cards.image.url }}" alt="">
+													</div>
+												</div>
+												<div class="col-md-12 col-lg-7">
+													<div class="card-body p-5">
+														<h3 class=""><a href="#" class="text-navy h2 font-weight-semibold mr-1">{{ cards.title }}</a></h3>
+														<dl class="small m-b-none">
+															<dd>{{ cards.text }}</dd>
+														</dl>
+														<a href="{% url 'news_list' %}"  class="mt-0 btn btn-sm btn-pill btn-outline-secondary">Go Back</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End Row -->
+					</div>
+				</div><!-- end app-content-->
+			</div>
+{% endblock content %}

@@ -20,6 +20,7 @@
 		<script src="{% static 'assets/plugins/bootstrap/popper.min.js' %}"></script>
 		<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
 
+
 		<!--Othercharts js-->
 		<script src="{% static 'assets/plugins/othercharts/jquery.sparkline.min.js' %}"></script>
 
@@ -50,6 +51,11 @@
 		<script src="{% static 'assets/plugins/p-scroll/perfect-scrollbar.js' %}"></script>
 		<script src="{% static 'assets/plugins/p-scroll/p-scroll1.js' %}"></script>
 
+
+		<!-- Custom scroll bar Js-->
+		<script src={% static 'assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js' %}></script>
+		<script src={% static 'assets/js/mscroll.js' %}></script>
+
 		<!-- Data tables js-->
 		<script src="{% static 'assets/plugins/datatable/jquery.dataTables.min.js' %}"></script>
 		<script src="{% static 'assets/plugins/datatable/dataTables.bootstrap4.min.js' %}"></script>
@@ -57,6 +63,7 @@
 
 		<!-- Select2 js -->
 		<script src="{% static 'assets/plugins/select2/select2.full.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'flowplay/flowplayer-3.2.2.min.js' %}" ></script>
 
 		<!-- Custom js-->
 		<script src="{% static 'assets/js/custom.js' %}"></script>
@@ -74,6 +81,16 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 });
+
+
+var myCustomScrollbar = document.querySelector('.my-custom-scrollbar');
+var ps = new PerfectScrollbar(myCustomScrollbar);
+
+var scrollbarY = myCustomScrollbar.querySelector('.ps__rail-y');
+
+myCustomScrollbar.onscroll = function () {
+  scrollbarY.style.cssText = `top: ${this.scrollTop}px!important; height: 400px; right: ${-this.scrollLeft}px`;
+}
 <script>
 
 </html>

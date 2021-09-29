@@ -1,31 +1,76 @@
 from django.http import request
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls.base import reverse_lazy
-from django.http import HttpResponseNotFound
-from django.views.generic import UpdateView
-from .models import Education, Employees, Position, Dismissal
-from .forms import AddEmployeeForm, AddPositionForm, AddEducationForm, WhyDeleteForm
+from django.http import HttpResponseNotFound, HttpResponse
+from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+from .models import Education, Employees, Position, Dismissal, News
+from .forms import AddEmployeeForm, AddPositionForm, AddEducationForm, NewsAddForm, CreateUserForm
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+
+
+
+def registerPage(request):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for' + user)
+
+            return redirect('login')
+
+    context = {'form': form}
+
+    return render(request, 'main/employee_list/register.html', context)
+
+
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
+
+    context = {}
+    return render(request, 'main/employee_list/login.html', context)
+
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
 
 
 def oops(request):
     return render(request, 'main/employee_list/404.html')
 
-
+@login_required(login_url='login')
 def index(request):
     posts = Employees.objects.filter(is_active=True)
     categories = Position.objects.all()
     education = Education.objects.all()
     why = Dismissal.objects.all()
 
+
     return render(request, 'main/employee_list/employee.html', {
         'posts': posts,
         'categories': categories,
         'why': why,
-        'education': education
+        'education': education,
     })
 
-
+@login_required(login_url='login')
 def add_employee(request):
     if request.method == 'POST':
 
@@ -43,7 +88,7 @@ def add_employee(request):
         'form': form,
     })
 
-
+@login_required(login_url='login')
 def show_detail(request, id):
     post = Employees.objects.get(id=id)
 
@@ -51,7 +96,7 @@ def show_detail(request, id):
         'post': post,
     })
 
-
+@login_required(login_url='login')
 def list_delete(request):
     delete = Employees.objects.filter(is_active=False)
 
@@ -59,6 +104,8 @@ def list_delete(request):
         'delete': delete,
     })
 
+
+@login_required(login_url='login')
 def why_delete(request, id):
     employee = Employees.objects.get(id=id)
     employee.is_active = False
@@ -67,6 +114,7 @@ def why_delete(request, id):
     return redirect('index')
 
 
+@login_required(login_url='login')
 def delete(request, id):
     try:
         employee = Employees.objects.get(id=id)
@@ -76,6 +124,7 @@ def delete(request, id):
         return HttpResponseNotFound("<h2>Person not found</h2>")
 
 
+@login_required(login_url='login')
 def update_page(request, pk):
     info = Employees.objects.get(id=pk)
     form = AddEmployeeForm(instance=info)
@@ -94,6 +143,7 @@ def update_page(request, pk):
     })
 
 
+@login_required(login_url='login')
 def sorting(request):
     education = Education.objects.all()
     categories = Position.objects.all()
@@ -109,6 +159,7 @@ def sorting(request):
     })
 
 
+@login_required(login_url='login')
 def sorting_1(request):
     education = Education.objects.all()
     categories = Position.objects.all()
@@ -123,6 +174,7 @@ def sorting_1(request):
     })
 
 
+@login_required(login_url='login')
 def search(request):
     education = Education.objects.all()
     categories = Position.objects.all()
@@ -141,6 +193,7 @@ def search(request):
     })
 
 
+@login_required(login_url='login')
 def category(request, id):
     education = Education.objects.all()
     categories = Position.objects.all()
@@ -160,6 +213,7 @@ def category(request, id):
         return render(request, 'main/employee_list/employee.html')
 
 
+@login_required(login_url='login')
 def category_2(request, id):
     education = Education.objects.all()
     categories = Position.objects.all()
@@ -180,6 +234,7 @@ def category_2(request, id):
         return render(request, 'main/employee_list/employee.html')
 
 
+@login_required(login_url='login')
 def position(request):
     list = Position.objects.all()
 
@@ -189,6 +244,7 @@ def position(request):
     })
 
 
+@login_required(login_url='login')
 def add_position(request):
     if request.method == 'POST':
 
@@ -204,6 +260,7 @@ def add_position(request):
     })
 
 
+@login_required(login_url='login')
 def delete_position(request, id):
     try:
         positions = Position.objects.get(id=id)
@@ -212,6 +269,8 @@ def delete_position(request, id):
     except Position.DoesNotExist:
         return HttpResponseNotFound("<h2>Not found</h2>")
 
+
+@login_required(login_url='login')
 def education(request):
     lists = Education.objects.all()
 
@@ -220,6 +279,7 @@ def education(request):
     })
 
 
+@login_required(login_url='login')
 def add_education(request):
     if request.method == 'POST':
 
@@ -235,6 +295,7 @@ def add_education(request):
     })
 
 
+@login_required(login_url='login')
 def delete_education(request, id):
     try:
         educations = Education.objects.get(id=id)
@@ -242,5 +303,39 @@ def delete_education(request, id):
         return redirect('education')
     except Education.DoesNotExist:
         return HttpResponseNotFound("<h2>Not found</h2>")
+
+
+@login_required(login_url='login')
+def news_list(request):
+    card = News.objects.all()
+
+    return render(request, 'main/employee_list/news_list.html', {
+        'card': card,
+    })
+
+
+@login_required(login_url='login')
+def news_detail(request, id):
+    cards = News.objects.get(id=id)
+
+    return render(request, 'main/employee_list/news_detail.html', {
+        'cards': cards,
+    })
+
+
+@login_required(login_url='login')
+def add_news(request):
+    if request.method == 'POST':
+
+        form = NewsAddForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            print(form)
+            return redirect('news_list')
+    else:
+        form = NewsAddForm()
+    return render(request, 'main/employee_list/add_news.html', {
+        'form': form,
+    })
 
 # Create your views here.
