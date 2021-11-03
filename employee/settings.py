@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'rest_framework',
     'main',
 ]
 
@@ -130,7 +131,7 @@ EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'arzieva1313@gmail.com'
+EMAIL_HOST_USER = 'jazij113@gmail.com'
 EMAIL_HOST_PASSWORD = 'ajn25455'
 
 

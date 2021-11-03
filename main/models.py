@@ -91,13 +91,4 @@ class News(models.Model):
         verbose_name_plural = "Новости"
 
 
-# class User(models.Model):
-#     username = models.CharField("Имя пользователя", max_length=100)
-#     password = models.CharField("Пароль", max_length=100)
-#
-#     def __str__(self):
-#         return self.username
-#
-#     class Meta:
-#         verbose_name = ""
 # Create your models here.
