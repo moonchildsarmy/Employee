@@ -12,8 +12,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+# import DATABASES as DATABASES
+import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+db_from_env = dj_database_url.config()
+DATABASE['default'].update(db_from_env)
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +30,7 @@ SECRET_KEY = 'django-insecure-3t%$%_c!m@*cz*#5_ss-@-f!4kw3sdca5^79yw!@ieg$pjfh_i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -73,6 +78,7 @@ WSGI_APPLICATION = 'employee.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
